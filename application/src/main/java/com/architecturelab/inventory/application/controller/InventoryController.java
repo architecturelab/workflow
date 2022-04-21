@@ -1,7 +1,6 @@
 package com.architecturelab.inventory.application.controller;
 
-import com.architecturelab.inventory.core.item.service.ItemService;
-import com.architecturelab.inventory.core.user.service.UserService;
+import com.architecturelab.inventory.useCases.item.CreateItemInputUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,28 +9,26 @@ import org.springframework.web.bind.annotation.*;
 public class InventoryController {
 
     @Autowired
-    private ItemService itemService;
-
-    @Autowired
-    private UserService userService;
+    private CreateItemInputUseCase createItemInputUseCase;
 
     @GetMapping("/items")
     public String getAllItems() {
-        return "";
+        return "Get items";
     }
 
     @GetMapping("/item/{id}")
     public String getItemById(@PathVariable Long id) {
-        return "";
+        return "get item by id " + id;
     }
 
-    @PostMapping("/item/")
+    @PostMapping("/item")
     public String createItem() {
-        return "";
+        createItemInputUseCase.execute();
+        return "Creating item";
     }
 
     @PutMapping("/item/{id}")
     public String updateItem(@PathVariable Long id) {
-        return "";
+        return "updating item by id " + id;
     }
 }

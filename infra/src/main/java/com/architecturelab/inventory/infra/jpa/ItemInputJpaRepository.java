@@ -1,9 +1,7 @@
 package com.architecturelab.inventory.infra.jpa;
 
-import com.architecturelab.inventory.core.item.domain.input.ItemInput;
-import org.springframework.data.repository.CrudRepository;
+public interface ItemInputJpaRepository {
 
-import java.util.UUID;
+    public void createItemInput();
 
-public interface ItemInputJpaRepository extends CrudRepository<ItemInput, UUID> {
 }

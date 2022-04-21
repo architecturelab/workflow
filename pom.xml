@@ -7,13 +7,18 @@
     <groupId>com.architecturelab</groupId>
     <artifactId>inventory</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
     <packaging>pom</packaging>
 
     <modules>
-        <module>core</module>
+        <module>core-domain</module>
+        <module>core-use-cases</module>
         <module>infra</module>
         <module>application</module>
-
     </modules>
-
 </project>
