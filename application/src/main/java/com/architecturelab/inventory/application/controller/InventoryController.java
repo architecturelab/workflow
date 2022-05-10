@@ -1,6 +1,7 @@
 package com.architecturelab.inventory.application.controller;
 
 import com.architecturelab.inventory.useCases.item.CreateItemInputUseCase;
+import com.architecturelab.inventory.useCases.item.GetItemOutputUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,8 +12,12 @@ public class InventoryController {
     @Autowired
     private CreateItemInputUseCase createItemInputUseCase;
 
+    @Autowired
+    private GetItemOutputUseCase getItemOutputUseCase;
+
     @GetMapping("/items")
     public String getAllItems() {
+        getItemOutputUseCase.execute();
         return "Get items";
     }
 
