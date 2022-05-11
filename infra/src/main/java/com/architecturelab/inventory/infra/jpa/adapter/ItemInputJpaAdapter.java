@@ -15,6 +15,6 @@ public class ItemInputJpaAdapter implements ItemInputJpaRepository {
 
     @Override
     public void createItemInput() {
-        itemInputJpaDao.save(new ItemInputJpa(23, "Description"));
+        itemInputJpaDao.save(new ItemInputJpa());
     }
 }
