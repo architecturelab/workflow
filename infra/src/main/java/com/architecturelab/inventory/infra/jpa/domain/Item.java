@@ -2,30 +2,41 @@ package com.architecturelab.inventory.infra.jpa.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "item")
+@Table(name = "inve_item")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ItemInputJpa {
+@EqualsAndHashCode(callSuper=false)
+public class Item implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
+    @Column(name="ID")
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer activoId;
+    protected Long id;
 
-    @Column(name = "clase_id")
-    private Integer claseId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Type type;
 
-    @Column(name = "marca_id")
-    private Integer marcaId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Brand brand;
 
-    @Column(name = "modelo_id")
-    private Integer modeloId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Model model;
 
     @Column(name = "serial")
     private String serial;
@@ -48,8 +59,9 @@ public class ItemInputJpa {
     @Column(name = "observacion")
     private String observacion;
 
-    @Column(name = "dependecia_id")
-    private String dependenciaId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Dependency dependency;
 
     @Column(name = "usuario_creacion")
     private String usuarioCreacion;

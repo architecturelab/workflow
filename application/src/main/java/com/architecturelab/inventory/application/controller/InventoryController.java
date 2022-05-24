@@ -1,39 +1,79 @@
 package com.architecturelab.inventory.application.controller;
 
-import com.architecturelab.inventory.useCases.item.CreateItemInputUseCase;
-import com.architecturelab.inventory.useCases.item.GetItemOutputUseCase;
+import com.architecturelab.inventory.core.domain.item.ItemInput;
+import com.architecturelab.inventory.useCases.item.ItemInputUseCases;
+import com.architecturelab.inventory.useCases.item.ItemOutputUseCases;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/inventory")
 public class InventoryController {
 
     @Autowired
-    private CreateItemInputUseCase createItemInputUseCase;
+    private ItemInputUseCases itemInputUseCases;
 
     @Autowired
-    private GetItemOutputUseCase getItemOutputUseCase;
+    private ItemOutputUseCases itemOutputUseCases;
+
+    @GetMapping("/items-plain")
+    public ResponseEntity<List<ItemInput>> getAllItemsPlain() {
+        try {
+            List<ItemInput> items = itemInputUseCases.getAll();
+            if (items.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(items, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @GetMapping("/items")
     public String getAllItems() {
-        getItemOutputUseCase.execute();
+        //getItemOutputUseCase.execute();
         return "Get items";
     }
 
     @GetMapping("/item/{id}")
-    public String getItemById(@PathVariable Long id) {
-        return "get item by id " + id;
+    public ResponseEntity<ItemInput> getItemById(@PathVariable Long id) {
+        try {
+            ItemInput item = itemInputUseCases.getById(id);
+            if (item != null) {
+                return new ResponseEntity<>(item, HttpStatus.OK);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping("/item")
-    public String createItem() {
-        createItemInputUseCase.execute();
-        return "Creating item";
+    public ResponseEntity<ItemInput> createItem(@RequestBody ItemInput itemInput) {
+        try {
+            ItemInput _item = itemInputUseCases.create(itemInput);
+            return new ResponseEntity<>(_item, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    @PutMapping("/item/{id}")
-    public String updateItem(@PathVariable Long id) {
-        return "updating item by id " + id;
+    @PutMapping("/item")
+    public ResponseEntity<ItemInput> updateItem(@RequestBody ItemInput itemInput) {
+        try {
+            ItemInput item = itemInputUseCases.update(itemInput);
+            if (item !=null) {
+                return new ResponseEntity<>(item, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            System.out.println(e.fillInStackTrace());
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
