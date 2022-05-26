@@ -33,9 +33,3 @@ jobs:
 
       - name: Push Docker image
         run: docker push $IMAGE_NAME
-
-      - name: Deploy GCP
-        run: kubectl apply -f deploy-app.yml
-
-      - name: Loadbalancer
-        run: kubectl apply -f service-node.yml
