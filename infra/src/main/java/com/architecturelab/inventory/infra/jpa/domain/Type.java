@@ -2,6 +2,7 @@ package com.architecturelab.inventory.infra.jpa.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -11,24 +12,19 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Type {
-
-    private static final long serialVersionUID = 1L;
+@EqualsAndHashCode(callSuper=false)
+public class Type extends BaseEntity {
 
     public Type(Long id) {
         this.id = id;
     }
 
-    public Type(String nombre, String vidaUtil, String vigente) {
+    public Type(Long id, String nombre, String vidaUtil, String vigente) {
+        this.id = id;
         this.nombre = nombre;
         this.vidaUtil = vidaUtil;
         this.vigente = vigente;
     }
-
-    @Id
-    @Column(name="ID")
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
 
     @Column(name="nombre")
     private String nombre;

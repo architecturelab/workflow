@@ -104,12 +104,11 @@ public class ItemInputUseCasesImpl implements ItemInputUseCases {
 
     @Override
     public List<ItemInput> getAll() {
-        List<Item> items = StreamSupport
-                .stream( itemJpaRepository.getAll().spliterator(), false)
-                .collect(Collectors.toList());
+        List<Item> items = (List<Item>) itemJpaRepository.getAll();
 
         List<ItemInput> inputs = new ArrayList<ItemInput>();
-        items.forEach(i-> {
+
+        items.forEach(i -> {
             ItemInput item = new ItemInput(
                     i.getId(),
                     i.getType().getId(),
@@ -129,9 +128,6 @@ public class ItemInputUseCasesImpl implements ItemInputUseCases {
             );
             inputs.add(item);
         });
-        if (inputs.isEmpty()) {
-            return new ArrayList<ItemInput>();
-        }
         return inputs;
     }
 

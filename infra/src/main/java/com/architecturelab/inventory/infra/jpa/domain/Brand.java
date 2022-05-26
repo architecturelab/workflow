@@ -2,6 +2,7 @@ package com.architecturelab.inventory.infra.jpa.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -12,18 +13,19 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Brand implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@EqualsAndHashCode(callSuper=false)
+public class Brand extends BaseEntity {
 
     public Brand(Long id) {
         this.id = id;
     }
 
-    @Id
-    @Column(name="ID")
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    public Brand(Long id, String nombre, String vidaUtil, String vigente) {
+        this.id = id;
+        this.nombre = nombre;
+        this.vidaUtil = vidaUtil;
+        this.vigente = vigente;
+    }
 
     @Column(name="nombre")
     private String nombre;

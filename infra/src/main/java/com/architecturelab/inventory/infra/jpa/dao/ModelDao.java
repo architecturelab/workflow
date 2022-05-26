@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface ModelDao extends CrudRepository<Model, UUID> {
+public interface ModelDao extends CrudRepository<Model, Long> {
 }

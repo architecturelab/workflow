@@ -1,5 +1,6 @@
 package com.architecturelab.inventory.infra.jpa.repository.item;
 
+import com.architecturelab.inventory.infra.jpa.domain.BaseEntity;
 import com.architecturelab.inventory.infra.jpa.domain.Item;
 
 import java.util.Optional;

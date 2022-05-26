@@ -1,6 +1,7 @@
 package com.architecturelab.inventory.infra.jpa.repository.item;
 
 import com.architecturelab.inventory.infra.jpa.dao.ItemDao;
+import com.architecturelab.inventory.infra.jpa.domain.BaseEntity;
 import com.architecturelab.inventory.infra.jpa.domain.Item;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,6 @@ public class ItemJpaRepositoryImpl implements ItemJpaRepository {
 
     @Override
     public Item save(Item entity) {
-        System.out.println("=========================>>>>" + entity.toString());
         return itemDao.save(entity);
     }
 

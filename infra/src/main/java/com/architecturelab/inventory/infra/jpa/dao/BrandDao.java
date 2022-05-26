@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface BrandDao extends CrudRepository<Brand, UUID> {
+public interface BrandDao extends CrudRepository<Brand, Long> {
 }

@@ -2,6 +2,7 @@ package com.architecturelab.inventory.infra.jpa.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -14,18 +15,20 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Model implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@EqualsAndHashCode(callSuper=false)
+public class Model extends BaseEntity {
 
     public Model(Long id) {
         this.id = id;
     }
 
-    @Id
-    @Column(name="ID")
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    public Model(Long id, Brand brand, String nombre, String vidaUtil, String vigente) {
+        this.id = id;
+        this.brand = brand;
+        this.nombre = nombre;
+        this.vidaUtil = vidaUtil;
+        this.vigente = vigente;
+    }
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)

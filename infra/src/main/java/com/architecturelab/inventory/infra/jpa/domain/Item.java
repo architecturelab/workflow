@@ -17,14 +17,25 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper=false)
-public class Item implements Serializable {
+public class Item extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @Column(name="ID")
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    protected Long id;
+    public Item(Long id, Type type, Brand brand, Model model, String serial, Date fechaIngreso, Date fechaFinalGarantia, Double valor, Date fechaBaja, String estado, String observacion, Dependency dependency, String usuarioCreacion, Date fechaCreacion, String usuarioModifica) {
+        this.id = id;
+        this.type = type;
+        this.brand = brand;
+        this.model = model;
+        this.serial = serial;
+        this.fechaIngreso = fechaIngreso;
+        this.fechaFinalGarantia = fechaFinalGarantia;
+        this.valor = valor;
+        this.fechaBaja = fechaBaja;
+        this.estado = estado;
+        this.observacion = observacion;
+        this.dependency = dependency;
+        this.usuarioCreacion = usuarioCreacion;
+        this.fechaCreacion = fechaCreacion;
+        this.usuarioModifica = usuarioModifica;
+    }
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
