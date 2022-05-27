@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-  ACTIVE_PROFILE: prod
-  DB_USER: {{ secrets.DB_USER }}
-
 jobs:
 
   deploy:
