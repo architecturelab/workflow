@@ -14,4 +14,4 @@ COPY --from=build /home/gradle/src/application/build/libs/workflow-application-0
 
 ARG ACTIVE_PROFILE
 
-ENTRYPOINT ["java", "-Dspring.profiles.active=prod","-jar","/app/spring-boot-application.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=dev","-jar","/app/spring-boot-application.jar"]
