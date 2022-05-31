@@ -36,9 +36,9 @@ jobs:
 
       - name: Get GKE Credentials
         uses: google-github-actions/get-gke-credentials@v0.4.0
-          with:
-            cluster_name: cluster-main
-            location: us-central1-c
+        with:
+          cluster_name: cluster-main
+          location: us-central1-c
 
       - name: Creating deployment
         run: kubectl apply -f deployment.yml
