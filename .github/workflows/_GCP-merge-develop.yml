@@ -1,8 +1,8 @@
 name: Docker
 
 on:
-  pull_request:
-    branches: [ master ]
+  push:
+    branches: [ develop ]
 
 jobs:
 

@@ -2,7 +2,7 @@ name: Docker
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ develop ]
 
 jobs:
 
@@ -31,3 +31,11 @@ jobs:
 
       - name: Push Docker image
         run: docker push $IMAGE_NAME
+
+      # Move to merge develop when works
+
+      - name: Creating deployment
+        run: kubectl apply -f deployment.yml
+
+      - name: Creating service
+        run: kubectl apply -f service.yml
