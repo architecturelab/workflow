@@ -9,10 +9,10 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Collections;
 
 @SpringBootApplication(scanBasePackages = "com.architecturelab.workflow")
-public class InventoryRestApplication {
+public class WorkflowRestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(InventoryRestApplication.class, args);
+        SpringApplication.run(WorkflowRestApplication.class, args);
     }
 
     @Bean
