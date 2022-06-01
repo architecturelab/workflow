@@ -4,7 +4,7 @@
 
 ### TICKET
 - Crear
-  - URL: POST- http://34.122.37.103/workflow/ticket
+  - URL: POST- http://34.68.181.78/workflow/ticket
   - Ejemplo request:
     ```json
     { 
@@ -22,7 +22,7 @@
     "usuarioModifica": "test"
     }
 - Actualizar
-  - URL: PUT- http://34.122.37.103/workflow/ticket
+  - URL: PUT- http://34.68.181.78/workflow/ticket
   - Ejemplo request:
     ```json
     { 
@@ -41,6 +41,6 @@
     "usuarioModifica": "test"
     }
 - Listar todos
-  - URL: GET- http://34.122.37.103/workflow/tickets
+  - URL: GET- http://34.68.181.78/workflow/tickets
 - Consultar por Id:
-  - URL: GET- http://34.122.37.103/workflow/ticket/{id}
+  - URL: GET- http://34.68.181.78/workflow/ticket/{id}
