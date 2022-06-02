@@ -11,4 +11,4 @@ spec:
   selector:
     role: workflow
   type: LoadBalancer
-  loadBalancerIP: "34.69.117.231"
+  loadBalancerIP: "35.202.170.17"
