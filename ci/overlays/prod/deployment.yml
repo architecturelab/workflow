@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: workflow
+  minReadySeconds: 20
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        role: workflow
+    spec:
+      containers:
+        - name: workflow
+          image: us-central1-docker.pkg.dev/basearchitecture/quickstart-docker-repo/workflow
+          ports:
+            - containerPort: 80
