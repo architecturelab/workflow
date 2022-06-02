@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: workflow
+  name: workflow-qa
 spec:
   replicas: 1
   selector:
     matchLabels:
-      role: workflow
+      role: workflow-qa
   minReadySeconds: 20
   strategy:
     rollingUpdate:
@@ -16,11 +16,10 @@ spec:
   template:
     metadata:
       labels:
-        role: workflow
+        role: workflow-qa
     spec:
       containers:
-        - name: workflow
-          image: us.gcr.io/basearchitecture/workflow
-          # image: us-central1-docker.pkg.dev/basearchitecture/quickstart-docker-repo/static-site:f8aa8222c1f8b7325b2612303146eb9d1aa4dd33
+        - name: workflow-qa
+          image: us-central1-docker.pkg.dev/basearchitecture/quickstart-docker-repo/workflow-qa
           ports:
             - containerPort: 80

@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/workflow")
-public class InventoryController {
+public class WorkflowController {
 
     @Autowired
     private TicketInputUseCases ticketInputUseCases;
