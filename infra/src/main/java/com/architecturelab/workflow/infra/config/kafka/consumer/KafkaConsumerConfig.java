@@ -17,11 +17,11 @@ import java.util.Map;
 public class KafkaConsumerConfig {
 
     @Autowired
-    private ConsumerFactory<Integer, String> consumerFactory;
+    private ConsumerFactory<Integer, Object> consumerFactory;
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, Object> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(new DefaultKafkaConsumerFactory<>(consumerConfig()));
         return factory;
     }

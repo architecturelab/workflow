@@ -1,4 +1,4 @@
-package com.architecturelab.workflow.infra.kafka.consumer;
+package com.architecturelab.workflow.infra.kafka.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
