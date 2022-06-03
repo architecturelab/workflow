@@ -14,7 +14,7 @@ public class KafkaConsumerServiceImpl implements KafkaConsumerService {
     private static final Logger LOG = LoggerFactory.getLogger(KafkaConsumerServiceImpl.class);
 
     @KafkaListener(topics = "${app.spring.kafka.topic}")
-    public void receive(@Payload String message) {
+    public void receive(@Payload Message message) {
         LOG.info(String.format("Message recieved -> %s", message));
     }
 }
