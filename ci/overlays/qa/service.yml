@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: workflow-lb
+  name: workflow-lb-qa
 spec:
   ports:
     - protocol: TCP
@@ -9,6 +9,6 @@ spec:
       targetPort: 80
       name: http
   selector:
-    role: workflow
+    role: workflow-qa
   type: LoadBalancer
-  loadBalancerIP: "35.202.170.17"
+  loadBalancerIP: "35.222.87.103"
